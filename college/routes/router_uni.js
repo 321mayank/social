@@ -1,5 +1,6 @@
 const { connection_sql } = require('/Node.js/social/database/sql_connection')
 const { checkQuery, registerQuery, userUpdate  } = require('../uni_query')
+const {  college_reg } = require('/Node.js/social/college/college_validation')
 const express= require('express')
 const path = require('path')
 const app = express()
@@ -17,6 +18,8 @@ router_college.get('/college-register',(req,res)=>{
 })
 
 router_college.post('/college-register',(req,res)=>{
+
+  const data = college_reg.body.validate(req.body)
     const {regno,college_name,university_name,address,type,college_email,admin_name,email, password }= req.body
     console.log(college_name)
     connection_sql.query(checkQuery(email),(err,sql_value)=>{ // checking if email allready exist 
@@ -47,5 +50,7 @@ router_college.post('/college-register',(req,res)=>{
     
 
 });
+
+
 
 module.exports= router_college;
