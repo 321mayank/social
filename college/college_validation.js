@@ -1,7 +1,8 @@
 const joi = require('joi')
 const { password }= require('./custom_valid')
 
-const college_reg={
+const college_reg={ //creating validation for college registration
+    
     body: joi.object().keys({
         regno:joi.string().required(),
         college_name:joi.string().required(),
