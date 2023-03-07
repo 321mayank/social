@@ -15,6 +15,9 @@ app.get('/', (req, res) => { //rendered the login page
 app.get('/register',(req,res)=>{
   res.render('register')
 })
+app.get('/login',(req,res)=>{
+  res.render('login')
+})
 app.use('/',router_college)
 app.use('/',router_student)
 app.use('/',router_company)
